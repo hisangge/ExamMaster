@@ -1,8 +1,23 @@
+import React, { useEffect, useState } from "react";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head, Link } from "@inertiajs/react";
 import { Pie } from "react-chartjs-2";
 
 export default function Dashboard({ exams = [] }) {
+    // State for user stats
+    const [stats, setStats] = useState({
+        exams_generated: 0,
+        modules_uploaded: 0,
+    });
+
+    // Fetch user stats on component load
+    useEffect(() => {
+        fetch("/api/dashboard")
+            .then((response) => response.json())
+            .then((data) => setStats(data))
+            .catch((error) => console.error("Error fetching stats:", error));
+    }, []);
+
     // Prepare data for the pie chart
     const pieData = {
         labels: exams.map((exam) => exam.title), // Titles of the exams
@@ -36,10 +51,26 @@ export default function Dashboard({ exams = [] }) {
 
             <div className="flex flex-col h-full bg-gray-100 p-6">
                 {/* Title */}
-                <h1 className="text-2xl font-bold text-gray-800 mb-4">Exams Generated</h1>
+                <h1 className="text-2xl font-bold text-gray-800 mb-4">Dashboard</h1>
+
+                {/* Stats Overview */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+                    {/* Exams Generated */}
+                    <div className="bg-white shadow rounded-md p-4">
+                        <h2 className="text-lg font-semibold text-gray-700">Exams Generated</h2>
+                        <p className="text-3xl font-bold text-blue-600">{stats.exams_generated}</p>
+                    </div>
+
+                    {/* Modules Uploaded */}
+                    <div className="bg-white shadow rounded-md p-4">
+                        <h2 className="text-lg font-semibold text-gray-700">Modules Uploaded</h2>
+                        <p className="text-3xl font-bold text-green-600">{stats.modules_uploaded}</p>
+                    </div>
+                </div>
 
                 {/* List of Exams */}
                 <div className="bg-white shadow rounded-md p-4 mb-6">
+                    <h2 className="text-lg font-semibold text-gray-700 mb-4">Exams List</h2>
                     {exams.length > 0 ? (
                         <ul className="space-y-2">
                             {exams.map((exam, index) => (
