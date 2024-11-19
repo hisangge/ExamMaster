@@ -8,13 +8,14 @@ export default function ApplicationLogo(props) {
                 height: "100%",
             }}
         >
-            {/* Image Logo */}
-            <img
-                src={new URL("../../../public/Minsu.jpg", import.meta.url).href}
-                alt="Logo"
-                className="h-11 w-auto fill-current text-gray-500" // Customize size as needed
-                // Ensures compatibility with inline styles
-            />
+           {/* Image Logo */}
+<img
+    src={new URL("../../../public/logo.png", import.meta.url).href}
+    alt="Logo"
+    className="h-16 w-auto fill-current text-gray-500" // Increased height to h-16
+    // Ensures compatibility with inline styles
+/>
+
         </div>
     );
 }
