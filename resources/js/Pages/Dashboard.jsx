@@ -56,15 +56,15 @@ export default function Dashboard({ exams = [] }) {
                 {/* Stats Overview */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
                     {/* Exams Generated */}
-                    <div className="bg-white shadow rounded-md p-4">
-                        <h2 className="text-lg font-semibold text-gray-700">Exams Generated</h2>
-                        <p className="text-3xl font-bold text-blue-600">{stats.exams_generated}</p>
+                    <div className="bg-gradient-to-r from-blue-400 to-blue-500 text-white rounded-lg shadow-lg p-9">
+                        <h2 className="text-2xl font-bold">Exams Generated</h2>
+                        <p className="text-6xl font-bold mt-2  flex flex-col items-center">{stats.exams_generated}</p>
                     </div>
 
                     {/* Modules Uploaded */}
-                    <div className="bg-white shadow rounded-md p-4">
-                        <h2 className="text-lg font-semibold text-gray-700">Modules Uploaded</h2>
-                        <p className="text-3xl font-bold text-green-600">{stats.modules_uploaded}</p>
+                    <div className="bg-gradient-to-r from-teal-400 to-teal-500 text-white rounded-lg shadow-lg p-9">
+                        <h2 className="text-2xl font-bold">Modules Uploaded</h2>
+                        <p className="text-6xl font-bold mt-2  flex flex-col items-center">{stats.modules_uploaded}</p>
                     </div>
                 </div>
 
